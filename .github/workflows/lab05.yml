@@ -30,9 +30,9 @@ jobs:
      ctest
 
   - name: data_collect
-      run: |
-        lcov --capture --directory build --output-file cvg.info --rc lcov_branch_coverage=1 --ignore-errors mismatch,inconsistent
-        lcov --remove cvg.info '/usr/*' '*/tests/*' '*/build/*' --output-file cvgf.info
+    run: |
+     lcov --capture --directory build --output-file cvg.info --rc lcov_branch_coverage=1 --ignore-errors mismatch,inconsistent
+     lcov --remove cvg.info '/usr/*' '*/tests/*' '*/build/*' --output-file cvgf.info
 
   - name: Coveralls
     uses: coverallsapp/github-action@v2
