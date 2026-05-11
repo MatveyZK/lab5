@@ -19,7 +19,7 @@ jobs:
      cmake ${{github.workspace}} -B ${{github.workspace}}/build -DTESTS=ON
      cmake --build ${{github.workspace}}/build
 
- - name: Test
-   run: |
-    cd ${{github.workspace}}/build
-    ctest
+  - name: Test
+    run: |
+     cd ${{github.workspace}}/build
+     ctest
