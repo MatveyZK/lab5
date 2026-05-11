@@ -50,19 +50,19 @@ AccountMock acc2(2, 350);
 InSequence seq;
 
 //Конструктор Guard
-EXPECT_CALL(acc1, Lock());//.Times(1)<<"Конструктор Guard acc1 работает неверно!";
-EXPECT_CALL(acc2, Lock());//.Times(1)<<"Конструктор Guard acc2 работает неверно!";
+EXPECT_CALL(acc1, Lock());
+EXPECT_CALL(acc2, Lock());
 //Credit
-EXPECT_CALL(acc2, ChangeBalance(100));//.Times(1)<<"Не вызывается acc2.ChangeBalance(100)!";
+EXPECT_CALL(acc2, ChangeBalance(100));
 //Debit
-EXPECT_CALL(acc1, GetBalance()).WillOnce(Return(250));//.Times(1)<<"Не вызывается acc1.GetBalance()!"; //account.GetBalance()>sum
-EXPECT_CALL(acc1, ChangeBalance(-150));//.Times(1)<<"Не вызывается acc1.ChangeBalance(-150)!"; //100+fee
+EXPECT_CALL(acc1, GetBalance()).WillOnce(Return(250)); //account.GetBalance()>sum
+EXPECT_CALL(acc1, ChangeBalance(-150)); //100+fee
 //SaveToDataBase
-EXPECT_CALL(acc1, GetBalance()).WillOnce(Return(100));//.Times(1)<<"acc1.GetBalance() возвращает неверное значение!";
-EXPECT_CALL(acc2, GetBalance()).WillOnce(Return(450));//.Times(1)<<"acc2.GetBalance() возвращает неверное значение!";
+EXPECT_CALL(acc1, GetBalance()).WillOnce(Return(100));
+EXPECT_CALL(acc2, GetBalance()).WillOnce(Return(450));
 //Деструктор Guard
-EXPECT_CALL(acc2, Unlock());//.Times(1)<<"Деструктор Guard acc1 работает неверно!";
-EXPECT_CALL(acc1, Unlock());//.Times(1)<<"Деструктор Guard acc2 работает неверно!";
+EXPECT_CALL(acc2, Unlock());
+EXPECT_CALL(acc1, Unlock());
 //Сама транзакция
 EXPECT_TRUE(tran.Make(acc1, acc2, 100));//<<"Транзакция возвращает неверное значение!";
 
@@ -82,21 +82,21 @@ AccountMock acc2(2, 350);
 InSequence seq;
 
 //Конструктор Guard
-EXPECT_CALL(acc1, Lock()).Times(1);//<<"Конструктор Guard acc1 работает неверно!";
-EXPECT_CALL(acc2, Lock()).Times(1);//<<"Конструктор Guard acc2 работает неверно!";
+EXPECT_CALL(acc1, Lock());
+EXPECT_CALL(acc2, Lock());
 //Credit
-EXPECT_CALL(acc2, ChangeBalance(200));//.Times(1)<<"Не вызывается acc2.ChangeBalance(200)!";
+EXPECT_CALL(acc2, ChangeBalance(200));
 //Debit
-EXPECT_CALL(acc1, GetBalance());//.Times(1)<<"Не вызывается acc1.GetBalance()!"; //account.GetBalance()>sum
+EXPECT_CALL(acc1, GetBalance()); //account.GetBalance()>sum
 //Условие не выполнено (250!>200+fee)
 //Возврат переведённой суммы
-EXPECT_CALL(acc2, ChangeBalance(-200));//.Times(1)<<"Не выполняется возврат средств!";
+EXPECT_CALL(acc2, ChangeBalance(-200));
 //SaveToDataBase
-EXPECT_CALL(acc1, GetBalance()).WillOnce(Return(100));//.Times(1)<<"acc1.GetBalance() возвращает неверное значение!";
-EXPECT_CALL(acc2, GetBalance()).WillOnce(Return(450));//.Times(1)<<"acc2.GetBalance() возвращает неверное значение!";
+EXPECT_CALL(acc1, GetBalance()).WillOnce(Return(100));
+EXPECT_CALL(acc2, GetBalance()).WillOnce(Return(450));
 //Деструктор Guard
-EXPECT_CALL(acc2, Unlock());//.Times(1)<<"Деструктор Guard acc1 работает неверно!";
-EXPECT_CALL(acc1, Unlock());//.Times(1)<<"Деструктор Guard acc2 работает неверно!";
+EXPECT_CALL(acc2, Unlock());
+EXPECT_CALL(acc1, Unlock());
 //Сама транзакция
 EXPECT_FALSE(tran.Make(acc1, acc2, 200))<<"Транзакция возвращает неверное значение!";
 
