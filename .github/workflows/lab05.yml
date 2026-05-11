@@ -23,3 +23,5 @@ jobs:
     run: |
      cd ${{github.workspace}}/build
      ctest
+  - name: Coveralls
+    uses: coverallsapp/github-action@v2
