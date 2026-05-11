@@ -11,5 +11,5 @@
 3. Настройте сборочную процедуру на **Github**.
 [lab05.yml](https://github.com/MatveyZK/lab5/blob/main/.github/workflows/lab05.yml)
 4. Настройте [Coveralls.io](https://coveralls.io/).
-[![Tests](https://github.com/MatveyZK/lab05/actions/workflows/lab05.yml/badge.svg)](https://github.com/MatveyZK/lab05/actions/workflows/lab05.yml)
+[![Tests](https://github.com/MatveyZK/lab5/blob/main/.github/workflows/lab05.yml/badge.svg)](https://github.com/MatveyZK/lab5/blob/main/.github/workflows/lab05.yml)
 [![Coverage Status](https://coveralls.io/repos/github/MatveyZK/lab05/badge.svg?branch=main)](https://coveralls.io/github/MatveyZK/lab05?branch=main)
