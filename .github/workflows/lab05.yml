@@ -1,0 +1,25 @@
+name: lab05
+
+on:
+ push:
+  branches: [master]
+  pull_request: [master]
+
+jobs:
+ Build: 
+  runs-on: ${{ matrix.os }}
+  strategy:
+   matrix:
+    os: [ubuntu-latest, windows-latest]
+  steps: 
+  - uses: actions/checkout@v3
+   
+  - name: Build
+    run: |
+     cmake ${{github.workspace}} -B ${{github.workspace}}/build -DTESTS=ON
+     cmake --build ${{github.workspace}}/build
+
+ - name: Test
+   run: |
+    cd ${{github.workspace}}/build
+    ctest
