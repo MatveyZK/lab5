@@ -2,8 +2,8 @@ name: lab05
 
 on:
  push:
-  branches: [master]
-  pull_request: [master]
+  branches: [main]
+  pull_request: [main]
 
 jobs:
  Build: 
